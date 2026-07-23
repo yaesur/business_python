@@ -243,7 +243,7 @@ async function startAnalysisFlow(event) {
         console.error(error);
         document.getElementById("panel-loading").classList.remove("active");
         document.getElementById("panel-2").classList.add("active");
-        alert("분석에 실패했습니다. Flask 백엔드 서버가 실행 중인지 확인하세요.");
+        alert(`분석에 실패했습니다.\n${error.message}`);
     }
 }
 
@@ -269,7 +269,19 @@ async function requestPrediction() {
     });
 
     if (!response.ok) {
-        throw new Error("예측 API 호출 실패");
+        let message = `예측 API 호출 실패 (${response.status})`;
+        try {
+            const errorBody = await response.json();
+            if (errorBody.error) {
+                message = errorBody.error;
+            }
+        } catch {
+            const text = await response.text();
+            if (text) {
+                message = text.slice(0, 180);
+            }
+        }
+        throw new Error(message);
     }
 
     return response.json();

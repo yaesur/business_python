@@ -338,6 +338,19 @@ def get_districts():
     return jsonify(district_stats)
 
 
+@app.route("/api/health", methods=["GET"])
+def health():
+    return jsonify(
+        {
+            "ok": True,
+            "model_loaded": model_data is not None,
+            "dataset_loaded": raw_dataset is not None,
+            "district_count": len(district_stats),
+            "kakao_key_loaded": bool(KAKAO_REST_API_KEY),
+        }
+    )
+
+
 @app.route("/api/geocode", methods=["GET"])
 def geocode():
     query = request.args.get("q", "").strip()

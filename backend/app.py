@@ -74,13 +74,15 @@ def save_geocode_cache():
         pass
 
 
-def geocode_kakao(query):
+def geocode_kakao(query, use_network=True):
     if not KAKAO_REST_API_KEY or not query:
         return None
 
     cache_key = normalize_listing_key(query)
     if cache_key in geocode_cache:
         return geocode_cache[cache_key]
+    if not use_network:
+        return None
 
     url = "https://dapi.kakao.com/v2/local/search/keyword.json?" + urllib.parse.urlencode(
         {"query": query, "size": 1}
@@ -346,6 +348,7 @@ def health():
             "model_loaded": model_data is not None,
             "dataset_loaded": raw_dataset is not None,
             "district_count": len(district_stats),
+            "geocode_cache_count": len(geocode_cache),
             "kakao_key_loaded": bool(KAKAO_REST_API_KEY),
         }
     )
@@ -470,7 +473,7 @@ def predict():
             )
 
             if include_map or target_point:
-                listing_point = geocode_kakao(history_list[-1]["address"])
+                listing_point = geocode_kakao(history_list[-1]["address"], use_network=False)
                 if listing_point:
                     history_list[-1]["lat"] = listing_point["lat"]
                     history_list[-1]["lng"] = listing_point["lng"]

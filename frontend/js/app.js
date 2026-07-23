@@ -270,14 +270,14 @@ async function requestPrediction() {
 
     if (!response.ok) {
         let message = `예측 API 호출 실패 (${response.status})`;
-        try {
-            const errorBody = await response.json();
-            if (errorBody.error) {
-                message = errorBody.error;
-            }
-        } catch {
-            const text = await response.text();
-            if (text) {
+        const text = await response.text();
+        if (text) {
+            try {
+                const errorBody = JSON.parse(text);
+                if (errorBody.error) {
+                    message = errorBody.error;
+                }
+            } catch {
                 message = text.slice(0, 180);
             }
         }

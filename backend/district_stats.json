@@ -1,0 +1,227 @@
+{
+    "강남구": {
+        "avg_pyung": 30.2,
+        "avg_traffic": 8.0,
+        "avg_density": 0.00018421100000000002,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.0,
+        "listing_count": 28
+    },
+    "강동구": {
+        "avg_pyung": 32.5,
+        "avg_traffic": 7.4,
+        "avg_density": 0.001442597,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 5.7,
+        "listing_count": 144
+    },
+    "강북구": {
+        "avg_pyung": 33.7,
+        "avg_traffic": 4.5,
+        "avg_density": 0.0008481010000000001,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 5.6,
+        "listing_count": 67
+    },
+    "강서구": {
+        "avg_pyung": 32.0,
+        "avg_traffic": 6.3,
+        "avg_density": 8.449999999999997e-05,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.8,
+        "listing_count": 15
+    },
+    "관악구": {
+        "avg_pyung": 31.7,
+        "avg_traffic": 9.2,
+        "avg_density": 0.000338462,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.2,
+        "listing_count": 66
+    },
+    "광진구": {
+        "avg_pyung": 33.9,
+        "avg_traffic": 7.4,
+        "avg_density": 0.00042982500000000005,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 7.0,
+        "listing_count": 49
+    },
+    "구로구": {
+        "avg_pyung": 29.3,
+        "avg_traffic": 11.8,
+        "avg_density": 0.00106087,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 5.4,
+        "listing_count": 122
+    },
+    "금천구": {
+        "avg_pyung": 28.0,
+        "avg_traffic": 16.7,
+        "avg_density": 0.0010000000000000002,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 5.4,
+        "listing_count": 78
+    },
+    "노원구": {
+        "avg_pyung": 43.0,
+        "avg_traffic": 2.9,
+        "avg_density": 5.220000000000001e-05,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 7.1,
+        "listing_count": 7
+    },
+    "도봉구": {
+        "avg_pyung": 32.1,
+        "avg_traffic": 12.7,
+        "avg_density": 0.00016666700000000006,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 5.8,
+        "listing_count": 13
+    },
+    "동대문구": {
+        "avg_pyung": 37.4,
+        "avg_traffic": 13.2,
+        "avg_density": 0.00028440400000000004,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.9,
+        "listing_count": 31
+    },
+    "동작구": {
+        "avg_pyung": 30.2,
+        "avg_traffic": 6.2,
+        "avg_density": 0.00010655699999999999,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 7.7,
+        "listing_count": 13
+    },
+    "마포구": {
+        "avg_pyung": 32.8,
+        "avg_traffic": 6.2,
+        "avg_density": 0.00022611499999999999,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 7.0,
+        "listing_count": 28
+    },
+    "서대문구": {
+        "avg_pyung": 31.6,
+        "avg_traffic": 18.3,
+        "avg_density": 0.00038144300000000003,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.3,
+        "listing_count": 37
+    },
+    "서초구": {
+        "avg_pyung": 29.8,
+        "avg_traffic": 10.9,
+        "avg_density": 0.0003421050000000001,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.4,
+        "listing_count": 39
+    },
+    "성동구": {
+        "avg_pyung": 21.7,
+        "avg_traffic": 7.0,
+        "avg_density": 0.00015909100000000004,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.1,
+        "listing_count": 14
+    },
+    "성북구": {
+        "avg_pyung": 37.5,
+        "avg_traffic": 5.8,
+        "avg_density": 0.00032727299999999994,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.2,
+        "listing_count": 45
+    },
+    "송파구": {
+        "avg_pyung": 32.0,
+        "avg_traffic": 5.6,
+        "avg_density": 0.0005958550000000002,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.4,
+        "listing_count": 115
+    },
+    "양천구": {
+        "avg_pyung": 27.6,
+        "avg_traffic": 17.6,
+        "avg_density": 0.000353982,
+        "mode_grade": "B",
+        "avg_rank": "2순위",
+        "avg_score": 4.6,
+        "listing_count": 40
+    },
+    "영등포구": {
+        "avg_pyung": 31.6,
+        "avg_traffic": 6.4,
+        "avg_density": 0.0006639999999999998,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 5.9,
+        "listing_count": 83
+    },
+    "은평구": {
+        "avg_pyung": 27.9,
+        "avg_traffic": 10.9,
+        "avg_density": 0.0002868220000000001,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 6.4,
+        "listing_count": 37
+    },
+    "종로구": {
+        "avg_pyung": 23.8,
+        "avg_traffic": 3.5,
+        "avg_density": 0.000146341,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.0,
+        "listing_count": 6
+    },
+    "중구": {
+        "avg_pyung": 29.3,
+        "avg_traffic": 7.0,
+        "avg_density": 0.0002972970000000001,
+        "mode_grade": "A",
+        "avg_rank": "1순위",
+        "avg_score": 6.1,
+        "listing_count": 11
+    },
+    "중랑구": {
+        "avg_pyung": 28.9,
+        "avg_traffic": 5.3,
+        "avg_density": 0.00041904799999999983,
+        "mode_grade": "C",
+        "avg_rank": "2순위",
+        "avg_score": 5.6,
+        "listing_count": 44
+    },
+    "전체": {
+        "avg_pyung": 31.2,
+        "avg_traffic": 9.1,
+        "avg_density": 0.0006680889973498233,
+        "mode_grade": "B",
+        "avg_rank": "1순위",
+        "avg_score": 6.0,
+        "listing_count": 1132
+    }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청년매입임대주택 당첨 예측 서비스</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="css/style.css?v=20260724-map3">
+</head>
+<body>
+    <div class="phone-simulator">
+        <div class="phone-notch"></div>
+
+        <header class="app-header">
+            <div class="nav-btn-group">
+                <button class="nav-btn" id="prev-btn" type="button" disabled title="이전">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="nav-btn" id="next-btn" type="button" disabled title="다음">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <span class="brand-title">SH 청년 홈플래너</span>
+        </header>
+
+        <main class="app-content">
+            <section id="panel-1" class="step-panel active">
+                <h2>어떤 주택을<br>찾고 계신가요?</h2>
+                <p class="subtitle">청년매입임대주택의 자치구별 과거 매물과 당첨 가능성을 분석합니다.</p>
+
+                <div class="type-card selected">
+                    <i class="fa-solid fa-house-chimney-user"></i>
+                    <div>
+                        <strong>청년매입임대주택</strong>
+                        <span>실제 모집 데이터 기반 자치구별 매물 분석</span>
+                    </div>
+                </div>
+
+                <button class="btn-primary" type="button" id="start-btn">
+                    다음으로 <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </section>
+
+            <section id="panel-2" class="step-panel">
+                <h2>진단 조건 입력</h2>
+                <p class="subtitle">검색 기준과 지원 순위, 가점을 입력하세요.</p>
+
+                <form id="combined-form">
+                    <div class="form-group">
+                        <label for="in-name">이름</label>
+                        <input type="text" id="in-name" class="form-control" placeholder="이름을 입력하세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>검색 기준</label>
+                        <div class="chip-group stacked" id="search-basis-group">
+                            <button type="button" class="chip-btn" data-basis="district">자치구 기준</button>
+                            <button type="button" class="chip-btn active" data-basis="location">특정 위치 기준</button>
+                        </div>
+                    </div>
+
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label for="in-hope-district" id="hope-district-label">입주 희망 자치구</label>
+                            <select id="in-hope-district" class="form-control" required></select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="in-target-location">학교/직장/특정 위치</label>
+                        <input type="text" id="in-target-location" class="form-control" placeholder="예: 고려대학교, 서울시립대, 강남역">
+                        <p class="field-hint" id="search-basis-hint">구 경계와 상관없이 입력한 위치 가까운 매물을 추천합니다.</p>
+                    </div>
+
+                    <div class="form-row-grid">
+                        <div class="form-group wide">
+                            <label>지원 순위</label>
+                            <div class="chip-group" id="rank-chip-group">
+                                <button type="button" class="chip-btn active" data-rank="1">1순위</button>
+                                <button type="button" class="chip-btn" data-rank="2">2순위</button>
+                                <button type="button" class="chip-btn" data-rank="3">3순위</button>
+                            </div>
+                        </div>
+                        <div class="form-group narrow">
+                            <label id="score-label" for="in-score">가점 (0~14점)</label>
+                            <input type="number" id="in-score" class="form-control" min="0" max="14" value="6" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row-grid">
+                        <div class="form-group">
+                            <label>공급 구분</label>
+                            <div class="chip-group" id="supply-chip-group">
+                                <button type="button" class="chip-btn active" data-supply="신규공급">신규</button>
+                                <button type="button" class="chip-btn" data-supply="재공급">재공급</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        매물별 당첨확률 진단하기 <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+                </form>
+            </section>
+
+            <section id="panel-loading" class="step-panel">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <h2>맞춤 매물 분석 중...</h2>
+                    <p>자치구 통계와 과거 당첨선을 확인하고 있습니다.</p>
+                </div>
+            </section>
+
+            <section id="panel-3" class="step-panel">
+                <h2 id="list-user-title">추천 결과</h2>
+                <p class="subtitle" id="result-subtitle">선택하신 자치구의 당첨 확률 분석 결과입니다.</p>
+
+                <div class="summary-strip">
+                    <div>
+                        <span>예상 확률</span>
+                        <strong id="summary-prob">-</strong>
+                    </div>
+                    <div>
+                        <span>진단</span>
+                        <strong id="summary-status">-</strong>
+                    </div>
+                    <div>
+                        <span>매물</span>
+                        <strong id="summary-count">-</strong>
+                    </div>
+                </div>
+
+                <div class="mini-map" id="result-map" hidden>
+                    <div class="leaflet-map" id="leaflet-map"></div>
+                    <div class="mini-map-empty" id="map-empty">표시할 좌표가 없습니다.</div>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="filter-chip active" type="button" data-color="green">초록</button>
+                    <button class="filter-chip active" type="button" data-color="yellow">노랑</button>
+                    <button class="filter-chip active" type="button" data-color="red">빨강</button>
+                </div>
+
+                <div class="district-filter-tabs" id="district-filter-tabs"></div>
+
+                <div class="mode-tabs">
+                    <button class="mode-chip active" type="button" data-mode="recommended">종합추천</button>
+                    <button class="mode-chip" type="button" data-mode="location">특정위치 5개</button>
+                    <button class="mode-chip" type="button" data-mode="price">월세/보증금 10개</button>
+                    <button class="mode-chip" type="button" data-mode="station">역세권 10개</button>
+                </div>
+
+                <p class="hint-text" id="result-hint"></p>
+
+                <div id="prob-house-container" class="house-list"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/app.js?v=20260724-map3"></script>
+</body>
+</html>

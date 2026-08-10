@@ -324,9 +324,6 @@ function executeMatching(result) {
         `<strong style="color:var(--primary)">${escapeHtml(userInputs.name)}</strong> 님의 분석 결과`;
     document.getElementById("result-subtitle").innerHTML =
         getResultSubtitle();
-    document.getElementById("summary-prob").textContent = `${result.probability}%`;
-    document.getElementById("summary-status").textContent = result.status;
-    document.getElementById("summary-count").textContent = `${getBaseCandidateHouses(processedHouses).length}건`;
 
     applyFiltersAndRender();
 }
@@ -459,8 +456,30 @@ function applyFiltersAndRender() {
 
     hint.textContent = message;
     visibleHouses = houses;
+    updateSummary(houses);
     renderMap(houses);
     renderHouseList(houses);
+}
+
+function updateSummary(houses) {
+    const validProbabilities = houses
+        .map((house) => house.calculatedProb)
+        .filter((probability) => Number.isFinite(probability));
+    const averageProbability = validProbabilities.length
+        ? Math.round(validProbabilities.reduce((sum, probability) => sum + probability, 0) / validProbabilities.length)
+        : null;
+
+    document.getElementById("summary-prob").textContent =
+        averageProbability === null ? "-" : `${averageProbability}%`;
+    document.getElementById("summary-status").textContent =
+        averageProbability === null ? "-" : getSummaryStatus(averageProbability);
+    document.getElementById("summary-count").textContent = `${houses.length}건`;
+}
+
+function getSummaryStatus(probability) {
+    if (probability >= 75) return "안정";
+    if (probability >= 40) return "경합";
+    return "도전";
 }
 
 function getBaseCandidateHouses(houses) {
